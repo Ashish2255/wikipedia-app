@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
+
+
+{% block title %}
+    title
+{% endblock %}
+
+{% block body %}
+{% with filtered_variable=entry|markdownify %}
+<!-- Use 'filtered_variable' in this block without affecting 'my_variable' -->
+{{ filtered_variable }}
+{% endwith %}
+    
+<a href="{% url 'display' entry=entry %}">edit page</a>   
+{% endblock %}
+
